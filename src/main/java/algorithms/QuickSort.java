@@ -13,19 +13,27 @@ public class QuickSort {
 	private static void quicksort(int[] a, int from, int to) {
 
 		int pivot = a[(from + to) / 2];
-		int i = from;
-		while (a[i] < pivot)
-			i++;
 
+		int i = from;
 		int j = to;
-		while (a[j] > pivot)
-			j--;
-		swap(a, i, j);
-		i++;
-		j--;
-		if (i < to)
+
+		while (i <= j) {
+			while (a[i] < pivot) {
+				i++;
+			}
+
+			while (a[j] > pivot) {
+				j--;
+			}
+			if (i <= j) {
+				swap(a, i, j);
+				i++;
+				j--;
+			}
+		}
+		if (from < j)
 			quicksort(a, from, j);
-		if (j > from)
+		if (i < to)
 			quicksort(a, i, to);
 
 	}
