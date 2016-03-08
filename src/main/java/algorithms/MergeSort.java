@@ -10,9 +10,11 @@ public class MergeSort {
 
     private static int[] sort(int[] values, int from, int to) {
         System.out.println("sort " + from + ".." + to + " " + Arrays.toString(values));
-        if (from > to)
+        if (from >= to)
             return new int[0];
-        else {
+        else if (from == to - 1) {
+            return new int[] { values[from] };
+        } else {
             int mid = (from + to) / 2;
             int[] x = sort(values, from, mid);
             int[] y = sort(values, mid + 1, to);
@@ -32,11 +34,11 @@ public class MergeSort {
             int i = 0;
             int j = 0;
             while (i < x.length || j < y.length) {
-                if (i > x.length) {
+                if (i >= x.length) {
                     result[n] = y[j];
                     n++;
                     j++;
-                } else if (j > y.length) {
+                } else if (j >= y.length) {
                     result[n] = x[i];
                     n++;
                     i++;
@@ -51,6 +53,7 @@ public class MergeSort {
                 }
             }
         }
+        System.out.println("returning " + Arrays.toString(result));
         return result;
     }
 
