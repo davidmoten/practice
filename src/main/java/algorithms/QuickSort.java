@@ -1,16 +1,20 @@
 package algorithms;
 
-public class QuickSort {
+public final class QuickSort {
 
+	private QuickSort() {
+		//prevent instantiation
+	}
+	
 	public static void sort(int[] a) {
 		if (a.length <= 1) {
 			return;
 		} else {
-			quicksort(a, 0, a.length - 1);
+			sort(a, 0, a.length - 1);
 		}
 	}
 
-	private static void quicksort(int[] a, int from, int to) {
+	private static void sort(int[] a, int from, int to) {
 
 		int pivot = a[(from + to) / 2];
 
@@ -21,7 +25,6 @@ public class QuickSort {
 			while (a[i] < pivot) {
 				i++;
 			}
-
 			while (a[j] > pivot) {
 				j--;
 			}
@@ -32,9 +35,9 @@ public class QuickSort {
 			}
 		}
 		if (from < j)
-			quicksort(a, from, j);
+			sort(a, from, j);
 		if (i < to)
-			quicksort(a, i, to);
+			sort(a, i, to);
 
 	}
 
