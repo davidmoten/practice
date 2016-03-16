@@ -75,6 +75,18 @@ public class Trees {
 		return result;
 	}
 
+	public static boolean equals(TreeNode a, TreeNode b) {
+		if (a == null && b == null) {
+			return true;
+		} else if (a == null || b == null) {
+			return false;
+		} else if (a.val != b.val){
+			return false;
+		} else {
+			return equals(a.left, b.left) && equals(a.right, b.right);
+		}
+	}
+	
 	public static TreeNode createTree() {
 		TreeNode a = new TreeNode(1);
 		TreeNode b = new TreeNode(2);
@@ -95,7 +107,7 @@ public class Trees {
 		assertTrue(postOrder(null).isEmpty());
 		assertEquals(Arrays.asList(1, 2, 4, 5, 3, 6), preOrder(createTree()));
 		assertTrue(preOrder(null).isEmpty());
-		assertEquals(Arrays.asList(4,2,5,1,3,6), inOrder(createTree()));
+		assertEquals(Arrays.asList(4, 2, 5, 1, 3, 6), inOrder(createTree()));
 		assertTrue(inOrder(null).isEmpty());
 		System.out.println("passed");
 	}
