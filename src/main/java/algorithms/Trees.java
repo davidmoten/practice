@@ -10,7 +10,7 @@ import java.util.Deque;
 import java.util.List;
 
 public class Trees {
-	
+
 	public static List<Integer> postOrder(TreeNode a) {
 		Deque<Integer> result = new ArrayDeque<>();
 		if (a == null) {
@@ -18,11 +18,11 @@ public class Trees {
 		}
 		Deque<TreeNode> stack = new ArrayDeque<>();
 		stack.push(a);
-		
+
 		while (!stack.isEmpty()) {
 			TreeNode node = stack.pop();
 			result.push(node.val);
-			if (node.left!= null) {
+			if (node.left != null) {
 				stack.push(node.left);
 			}
 			if (node.right != null) {
@@ -37,21 +37,44 @@ public class Trees {
 			return new ArrayList<>();
 		}
 		List<Integer> result = new ArrayList<>();
-		Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
+		Deque<TreeNode> stack = new ArrayDeque<>();
 		stack.push(a);
 		while (!stack.isEmpty()) {
 			TreeNode node = stack.pop();
 			result.add(node.val);
-			if (node.right !=null) {
+			if (node.right != null) {
 				stack.push(node.right);
 			}
-			if (node.left!=null) {
+			if (node.left != null) {
 				stack.push(node.left);
 			}
 		}
 		return result;
 	}
-	
+
+	public static List<Integer> inOrder(TreeNode a) {
+		if (a == null)
+			return new ArrayList<Integer>();
+		List<Integer> result = new ArrayList<>();
+		Deque<TreeNode> stack = new ArrayDeque<>();
+		stack.push(a);
+		while (!stack.isEmpty()) {
+			TreeNode node = stack.pop();
+			if (node.left == null && node.right == null) {
+				result.add(node.val);
+			} else {
+				if (node.right != null) {
+					stack.push(node.right);
+				}
+				stack.push(new TreeNode(node.val));
+				if (node.left != null) {
+					stack.push(node.left);
+				}
+			}
+		}
+		return result;
+	}
+
 	public static TreeNode createTree() {
 		TreeNode a = new TreeNode(1);
 		TreeNode b = new TreeNode(2);
@@ -66,12 +89,15 @@ public class Trees {
 		c.right = f;
 		return a;
 	}
-	
+
 	public static void main(String[] args) {
-		assertEquals(Arrays.asList(4,5,2,6,3,1),  postOrder(createTree()));
+		assertEquals(Arrays.asList(4, 5, 2, 6, 3, 1), postOrder(createTree()));
 		assertTrue(postOrder(null).isEmpty());
-		assertEquals(Arrays.asList(1,2,4,5,3,6), preOrder(createTree()));
+		assertEquals(Arrays.asList(1, 2, 4, 5, 3, 6), preOrder(createTree()));
 		assertTrue(preOrder(null).isEmpty());
+		assertEquals(Arrays.asList(4,2,5,1,3,6), inOrder(createTree()));
+		assertTrue(inOrder(null).isEmpty());
+		System.out.println("passed");
 	}
-	
+
 }
