@@ -79,7 +79,6 @@ public class Sorting {
         System.out.println(Long.toBinaryString(reverseBits(3)));
         System.out.println(reverseBits(3));
         System.out.println(indexOf(new int[] { 1, 2, 3, 5, 6 }, 7));
-
     }
 
 }
