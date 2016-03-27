@@ -1,7 +1,9 @@
 package algorithms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class Combinations {
 
@@ -29,7 +31,23 @@ public class Combinations {
 	}
 
 	public static void main(String[] args) {
+		System.out.println(1>>32);
 		System.out.println(combinations(4, 2));
+		System.out.println(Integer.parseInt("-1987654321"));
+		System.out.println(-11 % 10);
+
+		PriorityQueue<Integer> q = new PriorityQueue<>(Collections.reverseOrder());
+		q.add(1);
+		q.add(4);
+		q.add(3);
+		q.add(3);
+		System.out.println(q.peek());
+		q.remove(3);
+		System.out.println("size=" + q.size());
+		q.remove(3);
+		System.out.println("size=" + q.size());
+		System.out.println(q.poll());
+		System.out.println(q.poll());
 	}
 
 }
