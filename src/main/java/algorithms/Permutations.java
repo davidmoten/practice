@@ -32,6 +32,9 @@ public class Permutations {
 	
 	public static void main(String[] args) {
 		System.out.println(permutations(3,2));
+		System.out.println(0xFFFFFFFF);
+		StringBuffer s = new StringBuffer();
+		s.append("boo");
 	}
 
 }
